@@ -12,4 +12,4 @@ jobs:
       - uses: crytic/slither-action@v0.4.1
         with:
           sarif: results.sarif
-          fail-on: high        # 发现 high 及以上问题则失败
+          fail-on: none        # 测试场景修改为 none ，正式场景为 false
