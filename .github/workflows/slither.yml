@@ -1,0 +1,15 @@
+name: Slither Analysis
+on: [push, pull_request]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write   # 推送到 Code Scanning 需要此权限
+    steps:
+      - uses: actions/checkout@v4
+      - uses: crytic/slither-action@v0.4.1
+        with:
+          sarif: results.sarif
+          fail-on: high        # 发现 high 及以上问题则失败
